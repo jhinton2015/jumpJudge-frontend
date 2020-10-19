@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { MeetComponent } from './meet/meet.component';
 import { AthletesComponent } from './athletes/athletes.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     MeetComponent,
-    AthletesComponent
+    AthletesComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

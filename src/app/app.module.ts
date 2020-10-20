@@ -8,6 +8,13 @@ import { HomeComponent } from './home/home.component';
 import { MeetComponent } from './meet/meet.component';
 import { AthletesComponent } from './athletes/athletes.component';
 import { AboutComponent } from './about/about.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from '@angular/material/button';
+import { AthleteTableComponent } from './athlete-table/athlete-table.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+
 
 @NgModule({
   declarations: [
@@ -15,12 +22,15 @@ import { AboutComponent } from './about/about.component';
     HomeComponent,
     MeetComponent,
     AthletesComponent,
-    AboutComponent
+    AboutComponent,
+    AthleteTableComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule, 
+    MatButtonModule, MatTableModule, MatPaginatorModule, MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]

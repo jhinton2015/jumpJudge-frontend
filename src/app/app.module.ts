@@ -14,6 +14,8 @@ import { AthleteTableComponent } from './athlete-table/athlete-table.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { HttpClientModule } from '@angular/common/http';
+import { DataService } from './data.service';
 
 
 @NgModule({
@@ -29,10 +31,11 @@ import { MatSortModule } from '@angular/material/sort';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    BrowserAnimationsModule, 
+    BrowserAnimationsModule,
+    HttpClientModule,
     MatButtonModule, MatTableModule, MatPaginatorModule, MatSortModule
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

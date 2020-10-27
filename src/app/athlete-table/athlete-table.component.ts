@@ -1,30 +1,32 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTable } from '@angular/material/table';
-import { AthleteTableDataSource, AthleteTableItem } from './athlete-table-datasource';
+import { Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
+import { CountryReports } from '../countryReports';
+import { DataService } from '../data.service';
+
+
 
 @Component({
   selector: 'app-athlete-table',
   templateUrl: './athlete-table.component.html',
   styleUrls: ['./athlete-table.component.css']
 })
-export class AthleteTableComponent implements AfterViewInit, OnInit {
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
-  @ViewChild(MatTable) table: MatTable<AthleteTableItem>;
-  dataSource: AthleteTableDataSource;
+export class AthleteTableComponent implements OnInit {
 
-  /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name', 'entry', 'team'];
+  @Input('ELEMENT_DATA')  ELEMENT_DATA!:  CountryReports[];
+  displayedColumns: string[] = ['country','cases','todayCases','deaths'];
+  dataSource = new MatTableDataSource<CountryReports>(this.ELEMENT_DATA);
 
-  ngOnInit() {
-    this.dataSource = new AthleteTableDataSource();
+  constructor(private service: DataService) { }
+
+  ngOnInit(){
+    this.getAllReports();
+  }
+  
+
+  public getAllReports(){
+    let resp=this.service.getAthletes();
+    resp.subscribe(report=>this.dataSource.data=report as CountryReports[])
   }
 
-  ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
-    this.table.dataSource = this.dataSource;
-  }
 }

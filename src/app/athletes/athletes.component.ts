@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Athlete } from './athlete';
+import { DataService } from '../data.service';
+
 
 @Component({
   selector: 'app-athletes',
@@ -7,16 +8,17 @@ import { Athlete } from './athlete';
   styleUrls: ['./athletes.component.css']
 })
 export class AthletesComponent implements OnInit {
-  athlete: Athlete = {
-    id: 1,
-    name: 'Jimbo',
-    entry: 26.8,
-    team: 'Nike'
-  };
-
+  /*  athlete: Athlete = {
+     id: 1,
+     name: 'Jimbo',
+     entry: 26.8,
+     team: 'Nike'
+   }; */
   constructor() { }
 
   ngOnInit() {
-  }
 
+  }
 }
+
+

@@ -1,9 +1,10 @@
-import { Input } from '@angular/core';
+import { Input, ViewChild } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { CountryReports } from '../countryReports';
 import { DataService } from '../data.service';
-
 
 
 @Component({
@@ -13,20 +14,26 @@ import { DataService } from '../data.service';
 })
 export class AthleteTableComponent implements OnInit {
 
-  @Input('ELEMENT_DATA')  ELEMENT_DATA!:  CountryReports[];
-  displayedColumns: string[] = ['country','cases','todayCases','deaths'];
+
+  @Input('ELEMENT_DATA') ELEMENT_DATA!: CountryReports[];
+  displayedColumns: string[] = ['country', 'cases', 'todayCases', 'deaths', 'add'];
   dataSource = new MatTableDataSource<CountryReports>(this.ELEMENT_DATA);
+
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
 
   constructor(private service: DataService) { }
 
-  ngOnInit(){
+  ngOnInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
     this.getAllReports();
   }
-  
 
-  public getAllReports(){
-    let resp=this.service.getAthletes();
-    resp.subscribe(report=>this.dataSource.data=report as CountryReports[])
+
+  public getAllReports() {
+    let resp = this.service.getAthletes();
+    resp.subscribe(report => this.dataSource.data = report as CountryReports[])
   }
 
 }

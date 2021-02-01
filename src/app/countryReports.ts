@@ -1,4 +1,4 @@
-export interface CountryReports {
+/* export interface CountryReports {
     country: string;
     cases: number;
     todayCases: number;
@@ -11,4 +11,10 @@ export interface CountryReports {
     deathsPerOneMillion: number;
     tests: string;
     testsPerOneMillion: string;
+} */
+
+export interface CountryReports{
+    name: string;
+    team: string;
+    entry: number;
 }

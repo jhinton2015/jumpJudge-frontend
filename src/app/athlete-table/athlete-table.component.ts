@@ -16,7 +16,8 @@ export class AthleteTableComponent implements OnInit {
 
 
   @Input('ELEMENT_DATA') ELEMENT_DATA!: CountryReports[];
-  displayedColumns: string[] = ['country', 'cases', 'todayCases', 'deaths', 'add'];
+  //displayedColumns: string[] = ['country', 'cases', 'todayCases', 'deaths', 'add'];
+  displayedColumns: string[] = ['name', 'team', 'entry']
   dataSource = new MatTableDataSource<CountryReports>(this.ELEMENT_DATA);
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
